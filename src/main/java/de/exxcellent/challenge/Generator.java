@@ -23,5 +23,22 @@ public class Generator {
         }
         return weatherList;        
     }
+
+    /**
+     * This method generates a ArrayList of Footboll Objects from a file path.
+     * @param path The path of the file as a string
+     * @return an ArrayList<Football> which has all the Football objects 
+     */
+    public static ArrayList<Football> generateFootballList(String path){
+        ArrayList<Football> footballList = new ArrayList<Football>();
+        ArrayList<String> data = utility.readFilePerLine(path);
+        data.remove(0); //Remove First Line
+        for (String line : data) {
+            String[] result = line.split(",");
+            Football tempFootball = new Football(result);
+            footballList.add(tempFootball);
+        }
+        return footballList;        
+    }
     
 }
